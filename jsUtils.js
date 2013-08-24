@@ -1,3 +1,9 @@
+/**
+ * jsUtils v1 - A JavaScript Utility Library
+ *
+ * Copyright 2013 Apurav Chauhan
+ * Released under the MIT license.
+ */
 (function(window,undefined){
 
 	var j$ = {}, 
