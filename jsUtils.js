@@ -6,9 +6,7 @@
 		 su, vu, du, au,
 		 exMessage = "invalid args",
 		/*vu variables start*/
-		 emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/ ,			 
-		 urlRegex = /(ftp|https?):\/\/[^ "]+$/  ,
-		 numericRegex = /^[0-9]+$/,
+		 numericRegex = /^-?\d+\.?\d*$/,
          intRegex = /^\-?[0-9]+$/,
          decimalRegex = /^\-?[0-9]*\.+[0-9]+$/,
          alphaRegex = /^[a-z]+$/i,
@@ -63,7 +61,7 @@
 		/*au variables end*/
 	
    /** string utils begin **/
- 	su = j$.string = {};
+ 	su = j$.string = j$.su = {};
 
 	//see su.isBlank for blank check
 	//works for string arg
@@ -128,41 +126,7 @@
 
 
 /** validation utils begin **/
-	vu = j$.valid = {};
-
-	vu.isEmail = function(str){
-		return emailRegex.test(str);
-	}
-
-	vu.isUrl = function(str){
-		return urlRegex.test(str);
-	}
-
-	vu.isCreditCard = function(str){
-		    /**Luhn mod_10 algo 
-				ref: http://af-design.com/blog/2010/08/18/validating-credit-card-numbers/
-				ref: https://github.com/jzaefferer/jquery-validation/blob/f5f47c5c661da5b0c0c6d59d169e82230928a804/src/core.js
-			**/
-			if ( /[^0-9 \-]+/.test(str) ) return false;
-			var nCheck = 0, nDigit = 0, bEven = false;
-
-			str = str.replace(/\D/g, "");
-			if ( str.length < 13 || str.length > 19 ) return false;
-		
-			for (var n = str.length - 1; n >= 0; n--) {
-				var cDigit = str.charAt(n);
-				nDigit = parseInt(cDigit, 10);
-				if ( bEven ) {
-					if ( (nDigit *= 2) > 9 ) {
-						nDigit -= 9;
-					}
-				}
-				nCheck += nDigit;
-				bEven = !bEven;
-			}
-			return (nCheck % 10) === 0;
-	}
-
+	vu = j$.valid = j$.vu = {};
 	vu.isNumber = function(val){
 		return numericRegex.test(val);
 	}
@@ -187,7 +151,7 @@
 
 /** date utils start **/
 	
-	du = j$.date= {};
+	du = j$.date = j$.du = {};
 	du.locale = defaultLocale;
 	du.UTC = false;
 	isUTC = function(selectUTC){
@@ -273,7 +237,7 @@
 /** date utils end **/
 
 /** collection utils start **/
-    au = j$.array= {};
+    au = j$.array = j$.au = {};
 	fx = au.fx = {};
 	au.indexOf = function(list, obj,condition){
 		if(!j$.isArray(list)) throw exMessage;
