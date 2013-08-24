@@ -6,9 +6,11 @@ A javascript utility library providing helper functions to aid faster and effici
 
 Sample usage:
 Step 1: Include the jsUtils library in your html
-<script type="text/javascript" src="jsUtils-min.js"></script>
+
+	<script type="text/javascript" src="jsUtils-min.js"></script>"
 
 Step2: Use the api using the j$ helper followed by the api component:
+
 	j$.string.capitalize("apurav");
 
 	OR use the shorthand :
